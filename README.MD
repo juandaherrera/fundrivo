@@ -8,7 +8,7 @@ Fundrivo es un proyecto personal que pretende ser una aplicación web para el co
 
 ## Variables de Entorno
 
-Las variables de entorno requieridas son las siguientes:
+Las variables de entorno requeridas son las siguientes:
 
 |   Nombre              |   Descripción                                                                 |
 |-----------------------|-------------------                                                            |
