@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+
+    <form class="login-form" method="POST"> {% csrf_token %}
+        <h1>Login</h1>
+
+        {% if form.non_field_errors %}
+
+            <p class="nonfielderror">
+                {% for error in form.non_field_errors %}
+                    {{ error|escape }}
+                {% endfor %}
+            </p>
+
+        {% endif %}
+
+
+        <div class="txtb">
+            <input type="text" id="id_username" name="username" autocomplete="off">
+            <span data-placeholder="Usuario"></span>                
+        </div>
+
+        {% if form.username.errors %}
+            <p class="error">
+                {% for error in form.username.errors %}
+                    *{{ error|escape }}
+                {% endfor %}
+            </p>
+        {% endif %}
+
+        <div class="txtb">
+            <input type="password" id="id_password" name="password">
+            <span data-placeholder="Contraseña"></span>
+        </div>
+
+        {% if form.password.errors %}
+            <p class="error pass">
+                {% for error in form.password.errors %}
+                    *{{ error|escape }}
+                {% endfor %}
+            </p>
+        {% endif %}
+
+        <input type="submit" class="logbtn" value="Ingresar">
+
+        <div class="bottom-text">
+            <a href="#">¿Has olvidado la contraseña?</a>
+        </div>
+        <div class="bottom-text-re">
+            ¿No tienes una cuenta? <a href="#"> Regístrate</a>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        $(".txtb input").on("focus", function () {
+            $(this).addClass("focus");
+        });
+
+        $(".txtb input").on("blur", function () {
+            if ($(this).val() == "") {
+                $(this).removeClass("focus");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
