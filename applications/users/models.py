@@ -6,4 +6,4 @@ class CustomUser(AbstractUser):
     """
     Custom class to modified Django's default user
     """
-    birthdate = models.DateField(verbose_name='Fecha de nacimiento')
+    birthdate = models.DateField(verbose_name='Fecha de nacimiento', null=True, blank=True)

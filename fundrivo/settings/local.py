@@ -8,7 +8,8 @@ ALLOWED_HOSTS = []
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
+#SQLITE
+SQLITE = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR.child('db.sqlite3'),
@@ -16,18 +17,21 @@ DATABASES = {
 }
 
 # PostgreSQL
-'''
-DATABASES = {
+
+POSTGRESQL = {
     'default': {
         'ENGINE' : 'django.db.backends.postgresql_psycopg2',
-        'NAME' : '',
-        'USER' : '',
-        'PASSWORD' : '',
+        'NAME' : config('PSQL_NAME'),
+        'USER' : config('PSQL_USER'),
+        'PASSWORD' : config('PSQL_PASSWORD'),
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
-'''
+
+
+DATABASES = POSTGRESQL
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

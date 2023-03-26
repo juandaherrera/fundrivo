@@ -10,8 +10,11 @@ Fundrivo es un proyecto personal que pretende ser una aplicación web para el co
 
 Las variables de entorno requeridas son las siguientes:
 
-|   Nombre              |   Descripción                                                                 |
-|-----------------------|-------------------                                                            |
-|   SECRET_KEY          |   Llave secreta que genera Django por defecto en el archivo `settings.py`     |
+|   Nombre  |   Descripción |
+|-----------|---------------|
+|   SECRET_KEY  |   Llave secreta que genera Django por defecto en el archivo `settings.py` |
+|   PSQL_USER   |   Usuario de pgAdmin  |
+|   PSQL_PASSWORD   |   Contraseña de pgAdmin   |
+|   PSQL_NAME   |   Nombre de la base de datos del proyecto. Definida de manera local en pgAdmin    |
 <!---|   CURRENCY_API_KEY    |   API Key brindada por [Open Exchange Rates](https://openexchangerates.org/signup)     |-->
 
