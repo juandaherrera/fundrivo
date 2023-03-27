@@ -14,16 +14,10 @@
           <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
           <li><a href="#" class="nav-link px-2 text-white">About</a></li>
         </ul>
-        
-        {% if user.is_authenticated %}
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-            Hola, <span style="color: #0EAD69;">{{ user.first_name }}</span>!
-          </form>
-        {% endif %}
 
         <div class="text-end align-items-center">
           {% if user.is_authenticated %}
-            <button type="button" class="btn btn-outline-light me-2">Cerrar sesión</button>
+            Hola, <span style="color: #0EAD69;">{{ user.first_name }}</span>!
           {% else %}
             <button type="button" class="btn btn-outline-light me-2">Login</button>
             <button type="button" class="btn btn-warning">Sign-up</button>
