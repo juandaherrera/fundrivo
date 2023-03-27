@@ -7,5 +7,5 @@ from .models import CustomUser
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (('custom', {
-        'fields': ('birthdate','country')
+        'fields': ('birthdate','country', 'app_permission')
     }),)
