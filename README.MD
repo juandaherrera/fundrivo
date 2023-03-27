@@ -4,7 +4,7 @@
 [![Django Version](https://img.shields.io/badge/django-4.1.7-brightgreen)]()
 
 
-Fundrivo es un proyecto personal que pretende ser una aplicación web para el control de finanzas personales con el uso/ayuda de Machine Learning.
+Fundrivo es un proyecto personal que pretende ser una aplicación web para el control de finanzas personales con el uso/ayuda de Machine Learning. Actualmente se encuentra en **fase de desarrollo**.
 
 ## Variables de Entorno
 

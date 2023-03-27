@@ -31,5 +31,5 @@ class CustomUser(AbstractUser):
     Custom class to modified Django's default user
     """
     birthdate = models.DateField(verbose_name='Fecha de nacimiento', null=True, blank=True)
-    country =  models.CharField(verbose_name="País de origen", null=True, choices=LATIN_AMERICA, max_length=2)
+    country =  models.CharField(verbose_name="País de origen", default='CO', choices=LATIN_AMERICA, max_length=2)
     app_permission = models.BooleanField(verbose_name="Permiso de usar la app", default=False)
