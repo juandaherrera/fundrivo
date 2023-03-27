@@ -3,4 +3,9 @@ from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser
 
 # Register your models here.
-admin.site.register(CustomUser, UserAdmin)
+
+@admin.register(CustomUser)
+class CustomUserAdmin(UserAdmin):
+    fieldsets = UserAdmin.fieldsets + (('custom', {
+        'fields': ('birthdate','country')
+    }),)

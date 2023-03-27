@@ -74,7 +74,7 @@ class BaseUpdateView(SuccessMessageMixin, NoPrivileges, UpdateView):
 # ------------------------------------------------ CORE VIEWS ------------------------------------------------
 
 
-class Home(LoginRequiredMixin, TemplateView):
+class Home(TemplateView):
     """
     Home page
     """

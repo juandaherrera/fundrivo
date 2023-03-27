@@ -1,0 +1,12 @@
+.logo-navbar{
+    min-width: 30%;
+    max-width: 45%;
+    max-height: 100px;
+    height: auto;
+    width: auto;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
