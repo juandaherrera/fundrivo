@@ -5,6 +5,8 @@ WSDL_URL = 'https://www.superfinanciera.gov.co/SuperfinancieraWebServiceTRM/TCRM
 def trm(date):
     """
     This function returns the Representative Market Rate for the Colombian peso (COP). If there is an error, it returns 0.
+
+    Credits: https://gist.github.com/cdiaz/a623334ee994a836cba3
     """
 
     try:

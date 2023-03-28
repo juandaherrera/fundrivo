@@ -22,7 +22,8 @@ En esta aplicación se realiza el proceso de ingreso de transacciones (ingresos,
 
 |   Nombre  |   Descripción |
 |-----------|---------------|
-|   Currency    |   Monedas utilizadas en las diferentes transacciones. Su código de tres digitos (`code`) debe estar en [ISO 4217](https://es.wikipedia.org/wiki/ISO_4217). Al realizar la primera migración, se crean por defecto las principales monedas del proyecto  |
+|   Currency    |   Monedas utilizadas en las diferentes transacciones. Su código de tres digitos (`code`) debe estar en [ISO 4217](https://es.wikipedia.org/wiki/ISO_4217). Al realizar la primera migración, se crean por defecto las monedas soportadas actualmente en el proyecto: COP y USD.  |
+|   AccountCategory |   Este modelo es la representación de los tipos de cuenta que los usuarios pueden tener. Por ejemplo: cuenta de ahorros, tarjetas de crédito, activos, pasivos. Este modelo solo será accesible para el administrador de la aplicación. **Los usuarios no podrán crear** categorías de cuenta.
 
 ## Variables de Entorno
 

@@ -2,6 +2,8 @@ from django.db import models
 from applications.core.models import ModelClass
 from django.utils import timezone
 
+from datetime import datetime
+
 from . import utils
 
 class Currency(ModelClass):
@@ -47,6 +49,23 @@ class Currency(ModelClass):
 
         else:
             print(f'{self.code} is not supported')
+
+    def get_old_trm(self, date):
+        updated_at = datetime.strptime(date, '%Y-%m-%d')
+
+        if self.code == 'COP':
+            trm_value = utils.trm(updated_at)
+
+            if trm_value == 0:
+                return None
+
+            return trm_value
+
+        elif self.code == 'USD':
+            return 1
+
+        else:
+            return None
 
 
     
