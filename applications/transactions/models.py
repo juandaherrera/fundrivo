@@ -68,10 +68,6 @@ class Currency(ModelClass):
             return None
 
 
-    
-
-    
-
 # ------------------------------------------------------------- Accounts -------------------------------------------------------------
 
 class AccountCategory(ModelClass):
