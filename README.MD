@@ -10,22 +10,19 @@ Fundrivo es un proyecto personal que pretende ser una aplicación web para el co
 
 ### Users
 
-Esta aplicación es una extensión del modelo de users que por defecto tiene Django.
-
-#### Modelos
+Esta aplicación es una extensión del modelo de users que por defecto tiene Django. La aplicación contiene los siguiente modelos:
 
 |   Nombre  |   Descripción |
 |-----------|---------------|
-|   CustomUser  |   Este modelo hereda del [`AbstractUser`](https://docs.djangoproject.com/en/4.1/topics/auth/customizing/) de Django. Se le añadieron los siguientes campos: birthdate, country y app_permission  |
+|   CustomUser  |   Este modelo hereda del [AbstractUser](https://docs.djangoproject.com/en/4.1/topics/auth/customizing/) de Django. Se le añadieron los siguientes campos: birthdate, country y app_permission  |
 
 ### Transactions
 
-En esta aplicación se realiza el proceso de ingreso de transacciones (ingresos, gastos, transferencias) por parte del usuario.
+En esta aplicación se realiza el proceso de ingreso de transacciones (ingresos, gastos o transferencias) por parte del usuario. La aplicación contiene los siguiente modelos:
 
-#### Modelos
 |   Nombre  |   Descripción |
 |-----------|---------------|
-|   Currency    |   Monedas utilizadas en las diferentes transacciones. Al realizar la primera migración, se crean por defecto las principales monedas del proyecto  |
+|   Currency    |   Monedas utilizadas en las diferentes transacciones. Su código de tres digitos (`code`) debe estar en [ISO 4217](https://es.wikipedia.org/wiki/ISO_4217). Al realizar la primera migración, se crean por defecto las principales monedas del proyecto  |
 
 ## Variables de Entorno
 
