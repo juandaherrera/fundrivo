@@ -1,6 +1,5 @@
 from django.db import models
 from applications.core.models import ModelClass
-from .models import Currency
 from django_userforeignkey.models.fields import UserForeignKey
 from django.utils import timezone
 
