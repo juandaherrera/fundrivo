@@ -1,5 +1,7 @@
 from django.db import models
 from applications.core.models import ModelClass
+from .models import Currency
+from django_userforeignkey.models.fields import UserForeignKey
 from django.utils import timezone
 
 from datetime import datetime
@@ -93,4 +95,27 @@ class AccountCategory(ModelClass):
 
     def __str__(self):
         return self.name
+    
 
+class Account(ModelClass):
+    """
+    This model is the representation of a user account. For example: A savings account at bank x, a credit card at bank y, etc.
+    """
+    category = models.ForeignKey(AccountCategory, on_delete=models.CASCADE, verbose_name='Account Category')
+    user = UserForeignKey(verbose_name='User', auto_user_add=True, related_name='+')
+    currency = models.ForeignKey(Currency, on_delete=models.CASCADE, verbose_name='Currency', default=Currency.objects.get(code='COP'))
+    name = models.CharField(max_length=80, verbose_name='Nombre')
+
+    class Meta:
+        verbose_name = 'Account'
+        verbose_name_plural = "Accounts"
+        ordering = ['user', 'name']
+
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'category', 'name'], name='user_category_name_unique')
+        ]
+
+    def __str__(self):
+        return self.name
+    
+    # pending add a function to get the most recent move

@@ -23,7 +23,8 @@ En esta aplicación se realiza el proceso de ingreso de transacciones (ingresos,
 |   Nombre  |   Descripción |
 |-----------|---------------|
 |   Currency    |   Monedas utilizadas en las diferentes transacciones. Su código de tres digitos (`code`) debe estar en [ISO 4217](https://es.wikipedia.org/wiki/ISO_4217). Al realizar la primera migración, se crean por defecto las monedas soportadas actualmente en el proyecto: COP y USD.  |
-|   AccountCategory |   Este modelo es la representación de los tipos de cuenta que los usuarios pueden tener. Por ejemplo: cuenta de ahorros, tarjetas de crédito, activos, pasivos. Este modelo solo será accesible para el administrador de la aplicación. **Los usuarios no podrán crear** categorías de cuenta.
+|   AccountCategory |   Este modelo es la representación de los tipos de cuenta que los usuarios pueden tener. Por ejemplo: cuenta de ahorros, tarjetas de crédito, activos, pasivos. Este modelo solo será accesible para el administrador de la aplicación. **Los usuarios no podrán crear** categorías de cuenta. Por defecto se crean cuatro instancias:  Cuenta corriente, Tarjeta de crédito, Activo y Pasivo |
+|   Account |   Con este modelo los usuarios pueden organizar y clasificar sus cuentas financieras según sus preferencias y necesidades, lo que facilita la gestión y el control de sus finanzas personales. Cada cuenta se asocia a un `AccountCategory`, que puede ser seleccionada de una lista predeterminada. Ejemplos: CC Banco X (tarjeta de crédito del banco x), Ahorros banco Y (Cuenta de ahorros del banco Y). La combinación de `User`, `AccountCategory` y el `name` de `Account` deben ser **únicas**. |
 
 ## Variables de Entorno
 

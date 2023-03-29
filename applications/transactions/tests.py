@@ -5,9 +5,10 @@ from .models import Currency
 
 # Create your tests here.
 
+# Currently not working.
 class CurrencyModelTest(TestCase):
 
-    def test_get_old_date_with_old_date(self):
+    def test_get_old_trm_with_old_date(self):
         """
         get_old_date returns the value of the Representative Market Rate for the specified date
         """
@@ -17,5 +18,5 @@ class CurrencyModelTest(TestCase):
 
         cop = Currency.objects.get(code='COP')
 
-        self.assertAlmostEqual(cop.get_old_trm(time1), 3981.16, 1)
-        self.assertAlmostEqual(cop.get_old_trm(time2), 3432.50, 1)
+        self.assertAlmostEqual(cop.get_old_trm(time1), 3981.16, 2)
+        self.assertAlmostEqual(cop.get_old_trm(time2), 3432.50, 2)
