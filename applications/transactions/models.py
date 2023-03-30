@@ -101,17 +101,16 @@ class Account(ModelClass):
     This model is the representation of a user account. For example: A savings account at bank x, a credit card at bank y, etc.
     """
     category = models.ForeignKey(AccountCategory, on_delete=models.CASCADE, verbose_name='Account Category')
-    user = UserForeignKey(verbose_name='User', auto_user_add=True, related_name='+')
-    currency = models.ForeignKey(Currency, on_delete=models.CASCADE, verbose_name='Currency', default=Currency.objects.get(code='COP'))
+    currency = models.ForeignKey(Currency, on_delete=models.CASCADE, verbose_name='Currency', default=Currency.objects.get(code='COP').pk)
     name = models.CharField(max_length=80, verbose_name='Nombre')
 
     class Meta:
         verbose_name = 'Account'
         verbose_name_plural = "Accounts"
-        ordering = ['user', 'name']
+        ordering = ['_creator_user', 'name']
 
         constraints = [
-            models.UniqueConstraint(fields=['user', 'category', 'name'], name='user_category_name_unique')
+            models.UniqueConstraint(fields=['_creator_user', 'category', 'name'], name='user_category_name_unique')
         ]
 
     def __str__(self):

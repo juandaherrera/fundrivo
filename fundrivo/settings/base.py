@@ -34,10 +34,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Third Party Apps
+    'django_userforeignkey',
     # Own apps
     'applications.core',
     'applications.users',
-    'applications.transactions'
+    'applications.transactions',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #Third Party
+    'django_userforeignkey.middleware.UserForeignKeyMiddleware',
 ]
 
 ROOT_URLCONF = 'fundrivo.urls'
