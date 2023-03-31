@@ -103,6 +103,7 @@ class Account(ModelClass):
     category = models.ForeignKey(AccountCategory, on_delete=models.CASCADE, verbose_name='Account Category')
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE, verbose_name='Currency', default=Currency.objects.get(code='COP').pk)
     name = models.CharField(max_length=80, verbose_name='Nombre')
+    balance = models.DecimalField(max_digits=12, verbose_name='Saldo', decimal_places=4, null=True, blank=True, default=0)
 
     class Meta:
         verbose_name = 'Account'
@@ -110,10 +111,36 @@ class Account(ModelClass):
         ordering = ['_creator_user', 'name']
 
         constraints = [
-            models.UniqueConstraint(fields=['_creator_user', 'category', 'name'], name='user_category_name_unique')
+            models.UniqueConstraint(fields=['_creator_user', 'category', 'name'], name='user_category_name_unique_account')
         ]
 
     def __str__(self):
         return self.name
     
     # pending add a function to get the most recent move
+
+
+class ExpenseCategory(ModelClass):
+    """
+        Model representing a category of spending. For example: subscriptions, food, gym, etc.
+    """
+
+    name = models.CharField(max_length=80, verbose_name='Nombre')
+    description = models.TextField(verbose_name='Descripción', null=True, blank=True)
+    icon = models.CharField(max_length=80, verbose_name='Icono (Fontawesome)', default='fa-solid fa-wallet')
+    parent_category = models.ForeignKey('self', verbose_name='Categoría padre', on_delete=models.CASCADE, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Expense Category'
+        verbose_name_plural = "Expense Categories"
+        ordering = ['_creator_user', 'name']
+
+        constraints = [
+            models.UniqueConstraint(fields=['_creator_user', 'name', 'parent_category'], name='user_category_name_unique_expense_category')
+        ]
+    
+    def __str__(self):
+        if self.parent_category:
+            return f'({self.parent_category}) {self.name}'
+        else:
+            return self.name

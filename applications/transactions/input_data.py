@@ -21,3 +21,18 @@ account_category_instaces = {
         'icon' : 'fas fa-balance-scale-left'
     }
 }
+
+
+default_expense_categories = [
+    {'name': 'Casa', 'description': 'Gastos relacionados con la vivienda', 'icon' : 'fas fa-home'},
+    {'name': 'Transporte', 'description': 'Gastos relacionados con el transporte', 'icon': 'fas fa-car'},
+    {'name': 'Formación', 'description': 'Gastos relacionados con la educación y la formación', 'icon' : 'fas fa-graduation-cap'},
+    {'name': 'Hogar', 'description': 'Gastos relacionados con el hogar y la decoración', 'icon' : 'fas fa-couch'},
+    {'name': 'Servicios públicos', 'description': 'Gastos relacionados con los servicios públicos como agua, luz, gas, etc.', 'icon' : 'fas fa-utensils'},
+    {'name': 'Alimentos', 'description': 'Gastos relacionados con la compra de alimentos', 'icon' : 'fas fa-shopping-basket'},
+    {'name': 'Suscripciones', 'description': 'Gastos relacionados con suscripciones a servicios y productos', 'icon' : 'fas fa-newspaper'},
+    {'name': 'Vestimenta', 'description': 'Gastos relacionados con la ropa y la vestimenta', 'icon' : 'fas fa-tshirt'},
+    {'name': 'Impuestos', 'description': 'Gastos relacionados con impuestos y tributos', 'icon' : 'fas fa-file-invoice-dollar'},
+    {'name': 'Salud', 'description': 'Gastos relacionados con la salud y los cuidados médicos', 'icon': 'fas fa-medkit'},
+    {'name': 'Entretenimiento', 'description': 'Gastos relacionados con el entretenimiento y los pasatiempos', 'icon': 'fas fa-gamepad'},
+]

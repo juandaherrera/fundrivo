@@ -1,8 +1,9 @@
-from django.db.models.signals import post_migrate
+from django.db.models.signals import post_migrate, post_save
 from django.dispatch import receiver
+from applications.users.models import CustomUser
 
-from .models import Currency, AccountCategory
-from .input_data import currency_instances, account_category_instaces
+from .models import Currency, AccountCategory, ExpenseCategory
+from .input_data import currency_instances, account_category_instaces, default_expense_categories
 
 @receiver(post_migrate)
 def create_defeault_instances(sender, **kwargs):
@@ -26,3 +27,12 @@ def create_defeault_instances(sender, **kwargs):
                 description=account_category_instaces[ac]['description'], 
                 icon=account_category_instaces[ac]['icon']
             )
+
+
+@receiver(post_save, sender=CustomUser)
+def create_default_categories(sender, instance, created, **kwargs):
+    if created:
+        # Create default ExpenseCategory instances
+        for category_data in default_expense_categories:
+            category_data['_creator_user'] = instance
+            ExpenseCategory.objects.create(**category_data)
