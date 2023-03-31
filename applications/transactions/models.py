@@ -111,7 +111,10 @@ class Account(ModelClass):
         ordering = ['_creator_user', 'name']
 
         constraints = [
-            models.UniqueConstraint(fields=['_creator_user', 'category', 'name'], name='user_category_name_unique_account')
+            models.UniqueConstraint(fields=['_creator_user', 'category', 'name'], 
+                                    name='user_category_name_unique_account',
+                                    condition=models.Q(_deleted=False)
+                                )
         ]
 
     def __str__(self):
@@ -136,7 +139,10 @@ class ExpenseCategory(ModelClass):
         ordering = ['_creator_user', 'name']
 
         constraints = [
-            models.UniqueConstraint(fields=['_creator_user', 'name', 'parent_category'], name='user_category_name_unique_expense_category')
+            models.UniqueConstraint(fields=['_creator_user', 'name', 'parent_category'], 
+                                    name='user_category_name_unique_expense_category',
+                                    condition=models.Q(_deleted=False)
+                                )
         ]
     
     def __str__(self):
