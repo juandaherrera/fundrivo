@@ -24,10 +24,9 @@ account_category_instaces = {
 
 
 default_expense_categories = [
-    {'name': 'Casa', 'description': 'Gastos relacionados con la vivienda', 'icon' : 'fas fa-home'},
     {'name': 'Transporte', 'description': 'Gastos relacionados con el transporte', 'icon': 'fas fa-car'},
     {'name': 'Formación', 'description': 'Gastos relacionados con la educación y la formación', 'icon' : 'fas fa-graduation-cap'},
-    {'name': 'Hogar', 'description': 'Gastos relacionados con el hogar y la decoración', 'icon' : 'fas fa-couch'},
+    {'name': 'Hogar', 'description': 'Gastos relacionados con el hogar y la decoración', 'icon' : 'fas fa-home'},
     {'name': 'Servicios públicos', 'description': 'Gastos relacionados con los servicios públicos como agua, luz, gas, etc.', 'icon' : 'fas fa-utensils'},
     {'name': 'Alimentos', 'description': 'Gastos relacionados con la compra de alimentos', 'icon' : 'fas fa-shopping-basket'},
     {'name': 'Suscripciones', 'description': 'Gastos relacionados con suscripciones a servicios y productos', 'icon' : 'fas fa-newspaper'},
