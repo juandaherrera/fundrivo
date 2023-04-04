@@ -32,7 +32,7 @@ class Currency(ModelClass):
     def update_trm(self):
         updated_at = timezone.now()
 
-        if self.code == 'COP':
+        if self.code == 'USD':
             trm_value = utils.trm(updated_at)
 
             if trm_value == 0:
@@ -43,7 +43,7 @@ class Currency(ModelClass):
             self.trm_updated_at = updated_at
             self.save()
 
-        elif self.code == 'USD':
+        elif self.code == 'COP':
             self.trm = 1
             self.trm_updated_at = updated_at
             self.save()
@@ -54,7 +54,7 @@ class Currency(ModelClass):
     def get_old_trm(self, date):
         updated_at = datetime.strptime(date, '%Y-%m-%d')
 
-        if self.code == 'COP':
+        if self.code == 'USD':
             trm_value = utils.trm(updated_at)
 
             if trm_value == 0:
@@ -62,7 +62,7 @@ class Currency(ModelClass):
 
             return trm_value
 
-        elif self.code == 'USD':
+        elif self.code == 'COP':
             return 1
 
         else:
@@ -101,7 +101,7 @@ class Account(ModelClass):
     This model is the representation of a user account. For example: A savings account at bank x, a credit card at bank y, etc.
     """
     category = models.ForeignKey(AccountCategory, on_delete=models.CASCADE, verbose_name='Account Category')
-    currency = models.ForeignKey(Currency, on_delete=models.CASCADE, verbose_name='Currency', default=Currency.objects.get(code='COP').pk)
+    currency = models.ForeignKey(Currency, on_delete=models.CASCADE, verbose_name='Currency', default=1)
     name = models.CharField(max_length=80, verbose_name='Nombre')
     balance = models.DecimalField(max_digits=12, verbose_name='Saldo', decimal_places=4, null=True, blank=True, default=0)
 
@@ -118,10 +118,11 @@ class Account(ModelClass):
         ]
 
     def __str__(self):
-        return self.name
+        return f'{self.name} ({self.balance:,.2f} {self.currency})'
     
     # pending add a function to get the most recent move
 
+# ------------------------------------------------------------- Expenses -------------------------------------------------------------
 
 class ExpenseCategory(ModelClass):
     """
@@ -150,3 +151,27 @@ class ExpenseCategory(ModelClass):
             return f'({self.parent_category}) {self.name}'
         else:
             return self.name
+        
+
+class Expense(ModelClass):
+    """
+    Model representing an expense in a specific currency in a given account.
+    """
+    account = models.ForeignKey(Account, verbose_name='Cuenta', on_delete=models.CASCADE)
+    currency = models.ForeignKey(Currency, verbose_name='Moneda', on_delete=models.CASCADE, default=1)
+    category = models.ForeignKey(ExpenseCategory, verbose_name='Categoría', on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=12, verbose_name='Valor', decimal_places=4, null=True, blank=True, default=0)
+    created_at = models.DateTimeField(verbose_name='Fecha del gasto', default=timezone.now)
+    description = models.TextField(verbose_name='Descripción', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Expense'
+        verbose_name_plural = "Expenses"
+        ordering = ['_creator_user', 'created_at', 'category', 'description']
+
+
+    def __str__(self):
+        return f'{self.category} (-{self.amount:,.2f} {self.currency})'
+    
+
+# ------------------------------------------------------------- Incomes -------------------------------------------------------------

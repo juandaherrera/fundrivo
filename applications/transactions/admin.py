@@ -23,6 +23,12 @@ class ExpenseCategoryAdmin(admin.ModelAdmin):
     list_filter = ('_creator_user', 'parent_category', 'name') # Campos por los que se puede filtrar
 
 
+class ExpenseAdmin(admin.ModelAdmin):
+    list_display = ('id', '_creator_user', '_created_at', 'description', 'amount', 'currency', 'created_at')
+    ordering = ('_creator_user', 'created_at', 'description')
+    search_fields = ('description', '_creator_user__username') # Campos por los que se puede buscar
+    list_filter = ('_creator_user', 'description', 'amount', 'currency', 'created_at') # Campos por los que se puede filtrar
+
 # --------------------------- Defaults ---------------------------
 
 admin.site.register(models.AccountCategory)
@@ -30,3 +36,4 @@ admin.site.register(models.AccountCategory)
 admin.site.register(models.Currency, CurrencyAdmin)
 admin.site.register(models.Account, AccountAdmin)
 admin.site.register(models.ExpenseCategory, ExpenseCategoryAdmin)
+admin.site.register(models.Expense, ExpenseAdmin)
